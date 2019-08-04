@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>D3.js</title>
+      <link rel= "stylesheet" type= "text/css" href= "static/styles/reveal.css">
+      <link rel= "stylesheet" type= "text/css" href= "static/styles/theme/default.css">
+      <link rel= "stylesheet" type= "text/css" href= "static/styles/theme/sky.css">
+      <link rel= "stylesheet" type= "text/css" href= "static/styles/zenburn.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+      <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+      <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+      <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+      <script src="static/d3lib.js"></script>
+      <script src="static/d3pie.min.js"></script>
+      <script type="text/javascript" src="static/data.json"></script>
+      <script type="text/javascript" src="static/crime.csv"></script>
+ 
+      <style>
+            body {
+                font-family: "Arial", sans-serif;
+            }
+            
+            .bar {
+                fill: #5f89ad;
+            }
+            
+            .axis {
+                font-size: 13px;
+            }
+            
+            .axis path,
+            .axis line {
+                fill: none;
+                display: none;
+            }
+            
+            .label {
+                font-size: 13px;
+            }
+        </style>
+    </head>
+
+   <body>   
+       
+      <div class="reveal">
+         <!-- Any section element inside of this container is displayed as a slide -->
+         <div class="slides">
+            
+            <section>
+               <h1 style="font-size: 120px">CS 498 Data Visualization</h1>
+               <h3  style="font-size: 50px">Gabriel</h3>
+            
+            </section>
+            <section>
+                  <h2 style="font-size: 50px">CS 498 Data Visualization</h3>
+                     <div style='font-size:24px;'>
+                     <p>This website displays an overview of records of new crime incidents from the crime incident report system of the Boston Police Department.</p>
+                     <br>
+                     <p>
+                            It shows a summary of select crimes according to the respective days of the week. </p>
+                     </div>
+                     
+            </section>
+            <section>
+                <form>
+                        <div ng-app="Crime" ng-controller="myApp" ng-init="readCSV()">
+                           <span ng-repeat="x in message">
+                                <label ><input type="radio" name="dataset" ng-model="x"  ng-click='radioButtonChange(x)' ng-value="x" checked><span ng-bind="x"></span></label>
+                           </span>
+                           <div  id="chartDiv"></div>
+                           <div>
+                                <ul>
+                                    <li type="square" style="color:rgb(31, 119, 180);">Monday - <span style="font-weight: 700" ng-bind="getWeekValue[0]"></span></li>
+                                    <li type="square" style="color:rgb(174, 199, 232)">Tuesday - <span style="font-weight: 700" ng-bind="getWeekValue[1]"></span></li>
+                                    <li type="square" style="color:rgb(255, 127, 14)">Wednesday - <span style="font-weight: 700" ng-bind="getWeekValue[2]"></span></li>
+                                    <li type="square" style="color:rgb(255, 187, 120)">Thrusday - <span style="font-weight: 700" ng-bind="getWeekValue[3]"></span></li>
+                                    <li type="square" style="color:rgb(44, 160, 44)">Friday - <span style="font-weight: 700" ng-bind="getWeekValue[4]"></span></li>
+                                    <li type="square" style="color:rgb(152, 223, 138)">Saturday - <span style="font-weight: 700" ng-bind="getWeekValue[5]"></span></li>
+                                    <li type="square" style="color:rgb(214, 39, 40)">Sunday - <span style="font-weight: 700" ng-bind="getWeekValue[6]"></span></li>
+                                </ul>
+                            </div>
+                 </div>
+               </form>
+              
+            </section>
+            <section>
+
+                <div id="pie"></div>
+          </section>
+         </div>
+      </div>
+      </div>
+
+      <script src="static/reveal.js"></script>
+      <script>
+         Reveal.initialize({
+         	controls: true,
+         	progress: true,
+         	history: true,
+         	center: true,
+         
+         	theme: Reveal.getQueryHash().theme || 'sky', // available themes are in /css/theme
+         	transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+         });
+      </script>
+   </body>
+</html>
